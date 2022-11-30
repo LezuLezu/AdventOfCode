@@ -3,7 +3,7 @@ def getData():
     data = []
     with open('2015/Day_3/data.txt', 'r') as file:
         dataF = file.read()
-        # print(dataF)
+        print(dataF)
         for i in range(len(dataF)):
             data.append(dataF[i])
         # print(data)
@@ -60,6 +60,7 @@ def getRoboHouses(data):
 
 def main():
     data = getData()
+    print(data)
     print("Part One, more than once visited: %s" %(getHouses(data)))
     print("Part two: %s" %(getRoboHouses(data)))
 main()
