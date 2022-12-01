@@ -1,6 +1,6 @@
 def getData():
     data = []
-    with open('2015/Day_1/data.txt', 'r') as file:
+    with open('2015/Day_01/data.txt', 'r') as file:
         dataF = file.read()
         # print(dataF)
         for i in range(len(dataF)):

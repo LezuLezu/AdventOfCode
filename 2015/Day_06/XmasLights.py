@@ -3,7 +3,7 @@ from ast import literal_eval
 
 
 def getData():
-    with open ("2015/Day_6/data.txt", "r") as file:
+    with open ("2015/Day_06/data.txt", "r") as file:
         data= [line.split() for line in file]
     return data
 

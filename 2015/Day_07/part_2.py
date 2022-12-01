@@ -2,7 +2,7 @@
 # got hella confused and still dont get this puzzle XD 
 #  code belongs to u/fiavolo on reddit
 #  https://www.reddit.com/r/adventofcode/comments/3vr4m4/comment/cxqejzx/?utm_source=share&utm_medium=web2x&context=3
-with open('2015/Day_7/data.txt') as file:
+with open('2015/Day_07/data.txt') as file:
     inputs = file.read().strip().split('\n')
 
 wires = {}

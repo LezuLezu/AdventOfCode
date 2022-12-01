@@ -1,6 +1,6 @@
 def getData():
     data = []
-    for line in open('2015/Day_5/data.txt', 'r'):
+    for line in open('2015/Day_05/data.txt', 'r'):
         items = line.rstrip('\n')
         data.append(items)
     # print(data)

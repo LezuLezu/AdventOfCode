@@ -1,7 +1,7 @@
 
 def getData():
     data = []
-    with open('2015/Day_3/data.txt', 'r') as file:
+    with open('2015/Day_03/data.txt', 'r') as file:
         dataF = file.read()
         print(dataF)
         for i in range(len(dataF)):
