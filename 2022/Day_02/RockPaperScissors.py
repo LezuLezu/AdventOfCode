@@ -102,20 +102,6 @@ def findScore_p2(data):
             score += 3
     return score
 
-# A -> Rock
-# B -> Paper
-# C -> Scissors
-
-#  Part one
-# X -> Rock         -> 1 point
-# Y -> Paper        -> 2 points
-# Z -> Scissors     -> 3 points
-
-#  Part two
-# X -> Lose        
-# Y -> Draw
-# Z -> Win
-
 def main():
     data = getData()
     score_P1 = findScore(data)
