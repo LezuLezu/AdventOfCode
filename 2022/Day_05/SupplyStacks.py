@@ -1,67 +1,26 @@
 
-# testStacks = {
-#     "1" : ["Z", "N"],
-#     "2" : ["M", "C", "D"],
-#     "3" : ["P"]
-# }
+testStacks = {
+    "1" : ["Z", "N"],
+    "2" : ["M", "C", "D"],
+    "3" : ["P"]
+}
 
-# stacks = {
-#     "1" : ["V", "C", "D", "R", "Z", "G", "B", "W"],
-#     "2" : ["G", "W", "F", "C", "B", "S", "T", "V"],
-#     "3" : ["C", "B", "S", "N", "W"],
-#     "4" : ["Q", "G", "M", "N", "J", "V", "C", "P"],
-#     "5" : ["T", "S", "L", "F", "D", "H", "B"],
-#     "6" : ["J", "V", "T", "W", "M", "N"],
-#     "7" : ["P", "F", "L", "C", "S", "T", "G"],
-#     "8" : ["B", "D", "Z"],
-#     "9" : ["M", "N", "Z", "W"],
-# }
-
-crates = """
-[W] [V]     [P]                    
-[B] [T]     [C] [B]     [G]        
-[G] [S]     [V] [H] [N] [T]        
-[Z] [B] [W] [J] [D] [M] [S]        
-[R] [C] [N] [N] [F] [W] [C]     [W]
-[D] [F] [S] [M] [L] [T] [L] [Z] [Z]
-[C] [W] [B] [G] [S] [V] [F] [D] [N]
-[V] [G] [C] [Q] [T] [J] [P] [B] [M]
- 1   2   3   4   5   6   7   8   9 
-"""
-
-crates = crates.splitlines()[1:-1] 
-
-stacks = []
-for s in range(9):
-    stacks.append([])
-
-for line in crates:
-    for i, char in enumerate(line[1::4][::-1]): #Elk 4e caracter is de letter of een spatie als ie leeg is
-        stacks[i].append(char)
-
-print(stacks)
-
-stacks = {
-            "1" : [],
-            "2" : [], 
-            "3" : [],
-            "4" : [],
-            "5" : [],
-            "6" : [],
-            "7" : [],
-            "8" : [],
-            "9" : [],
-        }
-for line, i in crates[-1], stacks.keys():
-    # print(line)
-    for crate in line:
-        stacks[str(i + 1)] = stacks[str( i + 1)].append(crate)
-print(stacks)
+stacksPrime = {
+    "1" : ["V", "C", "D", "R", "Z", "G", "B", "W"],
+    "2" : ["G", "W", "F", "C", "B", "S", "T", "V"],
+    "3" : ["C", "B", "S", "N", "W"],
+    "4" : ["Q", "G", "M", "N", "J", "V", "C", "P"],
+    "5" : ["T", "S", "L", "F", "D", "H", "B"],
+    "6" : ["J", "V", "T", "W", "M", "N"],
+    "7" : ["P", "F", "L", "C", "S", "T", "G"],
+    "8" : ["B", "D", "Z"],
+    "9" : ["M", "N", "Z", "W"],
+}
 
 def getMoves():
     moves = []
-    for line in open("2022/Day_05/TestData.txt"):
-    # for line in open("2022/Day_05/Data.txt"):
+    # for line in open("2022/Day_05/TestData.txt"):
+    for line in open("2022/Day_05/Data.txt"):
         if line.startswith("move"):
             line = line.split()
             # print(line)
@@ -72,6 +31,7 @@ def getMoves():
     return moves
 
 def getTopCrates(moves):
+    stacks = stacksPrime.copy()
     # for line in moves:
     #     # print(line)
     #     for crates in range(int(line[0])):
@@ -86,10 +46,26 @@ def getTopCrates(moves):
     # print(topItems)
     # print(testStacks)
     return topItems
+
+def getTopCratesFor9001(moves):
+    stacks = stacksPrime.copy()
+    topItems = []
+    for line in moves:
+        # print(line[0])
+        crateToMove = []
+        for crates in range(int(line[0])):
+            crateToMove.append(stacks[line[1]].pop())
+        stacks[line[2]].append(crateToMove[-1])
+    topItems = [stacks[key][-1] for key in stacks]
+    print(topItems)
+    return topItems
         
 def main():
     moves = getMoves()
-    # p1 = getTopCrates(moves)
-    # print("Part one, top Stacks %s"%''.join(p1))
+    p1 = getTopCrates(moves)
+    print("Part one, top Stacks %s" %(''.join(p1)))
+    p2 = getTopCratesFor9001(moves)
+    print("Part two, top Stacks %s" %(''.join(p2)))
+
 main()
 
